@@ -72,7 +72,7 @@ app.post('/api/greet', function(req, res){
 
 //Definig the post which we will use to access the API
 
-const PORT = 4009
+const PORT = process.env.PORT || 4009;
 
 app.listen(PORT, function(){
     console.log(`We starting the app on this port => ${PORT}`)
