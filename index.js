@@ -29,7 +29,6 @@ const greetings = {         //this variable is called a MAP and it is used to ho
 
 app.get('/api/greet', function(req, res){
     console.log(req.query)
-    const background= req.query.background;
     const username = req.query.username;
     const language = req.query.language;
 
@@ -42,8 +41,7 @@ app.get('/api/greet', function(req, res){
     const greeting = greetings[language];
 
     res.json({
-        message: `Hello, ${username}!`,
-        decoy: `How can your ${background} be more like you, ${username}`
+        message: `${greeting}, ${username}!`,
     })
 });
 

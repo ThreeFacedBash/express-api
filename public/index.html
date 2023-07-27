@@ -13,19 +13,19 @@
     <div x-data="{
         username : '',
         greeting : 'Type greeting above',
-        language: 'english',
+        language: '',
         greet(){
             //calling the API to get a greeting
             axios
-            .get(`/api/greet?username=${this.username}&language=english`)
-            .then(result =>{
+            .get(`/api/greet?username=${this.username}&language=${this.language}`)
+            .then(result => {
                 if(result.data.error){
                     this.greeting = result.data.error
                 }
                 else{
                     this.greeting=result.data.message
                 }
-                console.log(result.data)   
+               console.log(result.data)   
             })
         }
     }" >
