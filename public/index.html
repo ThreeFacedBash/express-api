@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stlye.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Document</title>
+</head>
+<body class="body">
+    <h1 class="h1">Greet Widget</h1>
+    <div x-data="{
+        username : '',
+        greeting : 'Type greeting above',
+        language: 'english',
+        greet(){
+            //calling the API to get a greeting
+            axios
+            .get(`/api/greet?username=${this.username}&language=english`)
+            .then(result =>{
+                if(result.data.error){
+                    this.greeting = result.data.error
+                }
+                else{
+                    this.greeting=result.data.message
+                }
+                console.log(result.data)   
+            })
+        }
+    }" >
+
+
+        
+        <div>
+            <input type="radio" value="english" id="english" x-model="language">
+            <label for="english">English</label>
+            <input type="radio" value="zulu" id="zulu" x-model="language">
+            <label for="zulu">Zulu</label>
+            <input type="radio" value="xhosa" id="xhosa" x-model="language">
+            <label for="xhosa">Xhosa</label>
+        </div>
+        <input type="text" x-model="username" >
+        <input type="button" value="Greet" @click="greet()">
+        <div x-text="greeting" >
+        </div>
+
+    </div>
+
+</body>
+</html>
