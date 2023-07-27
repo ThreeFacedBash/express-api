@@ -24,7 +24,7 @@ app.get('/', function(req, res){
 //Adding the root 
 
 const greetings = {         //this variable is called a MAP and it is used to hold the language variable
-    'english': 'hello',
+    'english': 'Hello',
 }
 
 app.get('/api/greet', function(req, res){
